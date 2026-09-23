@@ -1185,6 +1185,18 @@
                    transform:none;transform-style:flat;border-radius:12px;overflow:hidden;
                    background:linear-gradient(180deg,#16212a,#101a21);}
   #mapas .md-c{opacity:var(--op) !important;transform:none !important;animation:none !important;}
+
+  /* TARJA DE QUATRO NÚMEROS ABAIXO DE 1000px — o núcleo manda o último item ocupar a
+     linha inteira (`.statstrip>.stat:last-child{grid-column:1/-1}`), regra pensada para
+     sobra ÍMPAR. Com quatro itens isso quebra a grade: o terceiro fica sozinho com uma
+     célula vazia ao lado e o quarto desce ocupando tudo. Aqui as duas tarjas têm quatro
+     números, então viram 2x2 limpo. Correção escopada neste documento: a regra do núcleo
+     atinge todo profile publicado e mexer nela é decisão do dono. */
+  @media(max-width:1000px){
+    #decisoes .statstrip,#temporada .statstrip{grid-template-columns:repeat(2,1fr);}
+    #decisoes .statstrip>.stat:last-child,
+    #temporada .statstrip>.stat:last-child{grid-column:auto;}
+  }
 </style>
 </head>
 <body>
